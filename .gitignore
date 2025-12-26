@@ -1,0 +1,23 @@
+# Java
+*.class
+target/
+.metadata/
+.recommenders/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.env
+venv/
+env/
+
+# Data & Results
+data/subjects/*
+!data/subjects/.gitkeep
+data/outputs/*.json
+paper/*.png
+
+# OS
+.DS_Store
+Thumbs.db
