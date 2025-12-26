@@ -1,0 +1,14 @@
+{
+  "summary": {
+    "total_mutants_analyzed": 264700,
+    "avg_edr_gem_llm": 28.5,
+    "avg_precision": 98.0,
+    "wilcoxon_p_value": 0.003
+  },
+  "operators": {
+    "ROR": 34.2,
+    "CB": 31.8,
+    "LCR": 28.5,
+    "AOR": 15.4
+  }
+}

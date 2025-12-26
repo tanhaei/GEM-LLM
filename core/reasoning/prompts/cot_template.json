@@ -1,0 +1,35 @@
+{
+  "system_role": "You are a formal verification expert and Java static analyzer specialized in identifying program invariants.",
+  "task_description": "Identify the global invariant for the target variable at the mutation point within the provided context.",
+  "cot_steps": [
+    "Step 1: Trace the call-graph to find all unique entry points for the target method.",
+    "Step 2: Analyze all conditional branches in the callers that guard the invocation.",
+    "Step 3: Formulate a singular logical invariant I_G that is valid for all execution paths.",
+    "Step 4: Output the invariant strictly in SMT-LIB v2.6 format."
+  ],
+  "few_shot_examples": [
+    {
+      "context": {
+        "mutated_method": "validateAge",
+        "callers": ["registerUser"],
+        "guards": "age >= 18"
+      },
+      "reasoning": "The method validateAge is only called by registerUser. The caller ensures age is at least 18 before invocation.",
+      "output": "(assert (>= age 18))"
+    },
+    {
+      "context": {
+        "mutated_method": "processBalance",
+        "callers": ["withdraw"],
+        "guards": "balance > 0 && balance <= 10000"
+      },
+      "reasoning": "The withdrawal context limits the balance to a positive value not exceeding 10000.",
+      "output": "(assert (and (> balance 0) (<= balance 10000)))"
+    }
+  ],
+  "constraints": [
+    "The output must be a single SMT-LIB assertion.",
+    "Do not include any natural language explanation in the final output.",
+    "Ensure all variables match the JSON-IR data-flow mapping."
+  ]
+}
