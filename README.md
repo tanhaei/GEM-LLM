@@ -7,7 +7,7 @@
 * **Global Invariant Extraction**: Uses inter-procedural program slicing to capture calling-context information.  
 * **Neural-Formal Hybrid**: Bridges the gap between LLM reasoning and SMT-based formal verification (Z3).  
 * **High Precision**: Achieves 98% precision in identifying equivalent mutants on the Defects4J benchmark.  
-* **Model Agnostic**: Supports OpenAI (GPT-4o) and local deployments (Llama-3, Gemma) for privacy-sensitive environments.
+* **Model Agnostic**: Supports OpenAI (GPT-4o) and local deployments (Llama-3, Gemma 3) for privacy-sensitive environments.
 
 ## **📂 Repository Structure**
 
