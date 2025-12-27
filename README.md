@@ -11,7 +11,6 @@
 
 ## **📂 Repository Structure**
 
-```
 GEM-LLM/  
 ├── core/  
 │   ├── slicer/             \# Java-based static analysis (Soot)  
@@ -24,7 +23,6 @@ GEM-LLM/
 ├── scripts/                \# Automation & Setup scripts  
 ├── paper/                  \# Generated figures and LaTeX sources  
 └── README.md
-```
 
 ## **🛠️ Setup & Installation**
 
@@ -98,8 +96,13 @@ This will generate the following figures in the paper/ directory:
 
 If you use this work in your research, please cite:
 
+@article{tanhaei2025gemllm,  
+  title={GEM-LLM: Identifying Contextual Equivalent Mutants via Large Language Models; A Global Invariant-Based Approach},  
+  author={Tanhaei, Mohammad},  
+  journal={},  
+  year={2025}  
+}
 
 ## **⚖️ License**
 
 This project is licensed under the **MIT License** \- see the [LICENSE](https://www.google.com/search?q=LICENSE) file for details.
-

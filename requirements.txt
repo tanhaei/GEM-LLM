@@ -4,7 +4,7 @@ anthropic
 requests
 
 # Formal Verification
-z3-solver>=4.12.1
+z3-solver==4.12.1
 
 # Data Analysis & Visualization
 pandas
