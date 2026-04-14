@@ -1,5 +1,7 @@
 # **GEM-LLM: Identifying Contextual Equivalent Mutants via LLMs**
 
+**Article:** https://www.sciencedirect.com/science/article/pii/S2667305326000153
+
 **GEM-LLM** is a hybrid framework designed to solve the Equivalent Mutant Problem (EMP) in mutation testing. By combining the semantic reasoning power of Large Language Models (LLMs) with the formal rigor of SMT solvers, GEM-LLM identifies "Contextual Equivalence"—mutants that are functionally identical only when considering global program invariants and environmental constraints.
 
 ## **🚀 Key Features**
@@ -98,7 +100,22 @@ This will generate the following figures in the paper/ directory:
 
 ## **📝 Citation**
 
-If you use this work in your research, please cite:
+If you use this work in your research, please cite the published paper:
+
+- **Article link:** https://www.sciencedirect.com/science/article/pii/S2667305326000153
+- **BibTeX file:** [`CITATION.bib`](CITATION.bib)
+
+```bibtex
+@article{tanhaei2026gemllm,
+  title   = {GEM-LLM: Identifying Contextual Equivalent Mutants via Large Language Models; A Global Invariant-Based Approach},
+  author  = {Tanhaei, Mohammad and Alizadehsani, Roohallah},
+  journal = {Intelligent Systems with Applications},
+  year    = {2026},
+  month   = may,
+  pages   = {200640},
+  url     = {https://www.sciencedirect.com/science/article/pii/S2667305326000153}
+}
+```
 
 ## **⚖️ License**
 
