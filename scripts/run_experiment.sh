@@ -1,14 +1,31 @@
 #!/bin/bash
-# GEM-LLM Experiment Runner [cite: 213, 233]
+set -euo pipefail
 
-PROJECT=$1  # e.g., Chart
-VERSION=$2  # e.g., 1b
+PROJECT=${1:-}
+VERSION=${2:-}
+
+if [[ -z "$PROJECT" || -z "$VERSION" ]]; then
+  echo "Usage: $0 <Defects4J project> <version>"
+  exit 1
+fi
+
+WORKDIR="data/subjects/${PROJECT}_${VERSION}"
+SLICE_OUT="data/outputs/${PROJECT}_${VERSION}_slice.json"
+INVARIANT_OUT="data/outputs/${PROJECT}_${VERSION}_invariant.smt2"
+
+mkdir -p data/subjects data/outputs
 
 echo ">>> Setting up Defects4J project: $PROJECT $VERSION"
-defects4j checkout -p $PROJECT -v $VERSION -w data/subjects/${PROJECT}_${VERSION}
+defects4j checkout -p "$PROJECT" -v "$VERSION" -w "$WORKDIR"
 
-echo ">>> Phase 1: Running Static Slicer (Soot)"
-mvn -f core/slicer/pom.xml exec:java -Dexec.mainClass="ir.ac.ilam.tanhaei.ContextSlicer"
+echo ">>> Phase 1: Running static slicer"
+./scripts/run_slicer.sh "$WORKDIR" "${PROJECT}_${VERSION}" "$SLICE_OUT"
 
-echo ">>> Phase 2 & 3: LLM Reasoning and SMT Verification"
-python3 core/reasoning/engine.py --project $PROJECT --version $VERSION
+echo ">>> Phase 2: LLM reasoning"
+python3 core/reasoning/engine.py \
+  --project "$PROJECT" \
+  --version "$VERSION" \
+  --slice-file "$SLICE_OUT" \
+  --output "$INVARIANT_OUT"
+
+echo ">>> Invariant written to $INVARIANT_OUT"

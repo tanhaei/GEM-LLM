@@ -45,6 +45,8 @@ cd GEM-LLM
 pip install -r requirements.txt
 ```
 
+Optional local-model support requires installing Hugging Face runtime dependencies separately (for example `transformers` and a compatible backend such as `torch`).
+
 Build the Java Slicer:
 
 ```bash
@@ -69,7 +71,7 @@ Checkout a project from Defects4J and run the slicer:
 
 ```bash
 defects4j checkout -p Lang -v 1b -w data/subjects/Lang_1b  
-./scripts/run_slicer.sh Lang_1b
+./scripts/run_slicer.sh data/subjects/Lang_1b Lang_1b data/outputs/Lang_1b_slice.json
 ```
 
 ### **Phase 2 & 3: Identification & Verification**
@@ -77,7 +79,7 @@ defects4j checkout -p Lang -v 1b -w data/subjects/Lang_1b
 Run the reasoning engine and SMT solver:
 
 ```bash
-python3 core/reasoning/engine.py --project Lang_1b
+python3 core/reasoning/engine.py --project Lang --version 1b --slice-file data/outputs/Lang_1b_slice.json
 ```
 
 ## **📊 Reproducibility**
